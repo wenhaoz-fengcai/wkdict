@@ -204,7 +204,20 @@ def get_def(dt_lst):
         for case in e[1]:
           ret += color.DARKCYAN + "//e.g. " + case["t"] + '\n' + color.END
 
-    return re.sub('{.*?}', '', ret)
+    return remove_curly_braces(ret)
+
+def remove_curly_braces(string):
+  """Rmove '{}' patterns or keep the string after "|" in {"first"|"second"}
+  Arg:
+    string
+  Return:
+    Processed string, "" or "second"
+  """
+  def helper(matchobj):
+    return matchobj.group(1) + matchobj.group(2) +matchobj.group(3)
+  if "|" in string:
+    string = re.sub(r'(.*){.*\|([a-zA-Z]*)}(.*)', helper, string) 
+  return re.sub(r'{.*?}', "", string)
 
 def str_in_list(lst):
     """Concatenate all strings in a list of strings. For example,
