@@ -139,26 +139,15 @@ def str_in_list(lst):
     for e in lst:
         ret += e
     return ret
-
-def pretty_print(lst):
-    """Pretty_print func print each string line by line.
-    Args:
-      lst: A list contains all strings.
-    Raises:
-      TypeError: If lst is not a string type.
-    """
-    assert isinstance(lst, list)
-    for e in lst:
-        print(e)
-
-def main():
+    
+@click.command()
+@click.argument('word')
+def main(word):
     ret = "(* This application is powered by Merriam-Webster Inc.'s API. *)\n"
     ret += "(* Commercial use of this app is NOT allowed! *) \n"
-    resjson = requestAPI("love")
+    resjson = requestAPI(word)
     ret += parseJSON(resjson)
     print(ret)
-    # pretty_res = textwrap.wrap(ret)
-    # pretty_print(pretty_res)
 
 
 if __name__ == '__main__':
