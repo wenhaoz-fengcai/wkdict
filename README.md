@@ -13,6 +13,10 @@ A dictionary app sits in your CLI environment.
 
 
 
-<div>
-	![](https://github.com/jiaowoshabi/dict/MWLogo_LightBG_120x120_2x.png) This application is powered by Merriam-Webster Inc.'s Dictionary API. Commercial use of this app is NOT allowed!
+<div align="center">
+
+![](https://github.com/jiaowoshabi/dict/MWLogo_LightBG_120x120_2x.png) 
+
+This application is powered by Merriam-Webster Inc.'s Dictionary API. Commercial use of this app is NOT allowed!
+
 </div>
