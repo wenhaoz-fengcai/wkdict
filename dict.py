@@ -1,3 +1,4 @@
+import json
 import click
 import requests
 import textwrap
@@ -151,7 +152,8 @@ def pretty_print(lst):
         print(e)
 
 def main():
-    ret = "\n"
+    ret = "(* This application is powered by Merriam-Webster Inc.'s API. *)\n"
+    ret += "(* Commercial use of this app is NOT allowed! *) \n"
     resjson = requestAPI("love")
     ret += parseJSON(resjson)
     print(ret)
