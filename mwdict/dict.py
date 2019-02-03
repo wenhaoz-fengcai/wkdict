@@ -184,7 +184,6 @@ def get_sense(sense):
     elif defi == "":
       ret += defi
     else:
-      print(defi)
       ret +=  (color.GREEN + sn + ". " + color.END) + defi
     return ret
 
@@ -214,9 +213,10 @@ def remove_curly_braces(string):
     Processed string, "" or "second"
   """
   def helper(matchobj):
-    return matchobj.group(1) + matchobj.group(2) +matchobj.group(3)
-  if "|" in string:
-    string = re.sub(r'(.*){.*\|([a-zA-Z]*)}(.*)', helper, string) 
+    return matchobj.group(1) + color.UNDERLINE + matchobj.group(3) \
+          + color.END + color.GREEN+ matchobj.group(5) + color.END
+  while "|" in string:
+    string = re.sub(r'(.*){(.*)\|([a-zA-Z\ ]+)(.*)}(.*)', helper, string) 
   return re.sub(r'{.*?}', "", string)
 
 def str_in_list(lst):
