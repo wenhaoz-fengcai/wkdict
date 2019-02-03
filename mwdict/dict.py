@@ -1,12 +1,14 @@
 #!/usr/bin/env python3
+import re
 import json
 import click
 import requests
-import textwrap
 
 from constants import color
 from constants import URL
 from constants import KEY
+
+from pandas.io.json import json_normalize
 
 def requestAPI(word="test"):
     """ Query merriam-webster dictionary API for json results
@@ -52,14 +54,17 @@ def parse_entry(idx, entry):
              the headword.
     Returns:
       String representation of headword, pronunciation, functional label, 
-      short definition, full definition, use cases for each entry. (v 0.0.1)
+      short definition, full definition, usage example for each entry. (v 0.0.1)
     """
     res = "" + '\n'
-    # first line: idx. head word pron(optional)
+    # first section: idx. head word pron(optional)
     res += str(idx+1) + ". " + get_word(entry) + '\t' + get_pron(entry) \
-            + '\t' + get_funlabel(entry) +'\n'
-    # second line: short definition
-    res += get_shortdef(entry) + '\n'
+            + '\t' + get_funlabel(entry) +'\n\n'
+    # second section: short definition
+    res += get_shortdef(entry) + '\n\n'
+
+    # third section: full definition with use examples
+    res += get_sseq(entry) + '\n\n'
     return res
 
 
@@ -124,6 +129,83 @@ def get_shortdef(entry):
     return (color.RED + "Short definition: \n"
             + '* ' + str_in_list(entry.get("shortdef", [""])) + color.END)
 
+def get_sseq(entry):
+    """
+    Args:
+      entry: The organizational unit of a dictionary. An entry consists of 
+             at minimum a headword, along with content defining or translating 
+             the headword.
+    Returns:
+      Returns a string representation of definitions and example
+       sentences: (full_definition_str, list_of_usage_example_strs).
+    """
+    ret = ""
+    defi = entry.get("def", [dict()])
+    if len(defi) < 1 or "sseq" not in defi[0] or len(defi[0]["sseq"]) < 1:
+      return ret
+
+    sseqlist = defi[0]["sseq"]
+    for idx, e in enumerate(sseqlist):
+      for sense_or_pseq in e:
+        if "sense" == sense_or_pseq[0]:
+          ret +=  get_sense(sense_or_pseq[1])
+        elif "pseq" == sense_or_pseq[0]:
+          ret += get_pseq(sense_or_pseq[1])
+    # "sseq is not an empty list"
+    return (color.GREEN + "Full definition: \n" + color.END) + ret 
+
+def get_pseq(pseq):
+  ret = ""
+  for lst in pseq:
+    if lst[0] == "bs":
+      ret += get_bs(lst[1])
+    elif lst[0] == "sense":
+      ret += get_sense(lst[1])
+  return ret
+
+def get_bs(bs):
+  ret = ""
+  ret += get_sense(bs["sense"])
+  return ret
+
+
+def get_sense(sense):
+    """ parse sense object and return a string representation.
+    Args:
+      dt_lst: contains "sn" and "dt"
+    Returns:
+      Returns a string representation of sense object
+    """
+    ret = ""
+    sn = sense.get("sn", "")
+    defi = get_def(sense["dt"]).strip()
+    if sn == "":
+      ret += defi
+    elif defi == "":
+      ret += defi
+    else:
+      print(defi)
+      ret +=  (color.GREEN + sn + ". " + color.END) + defi
+    return ret
+
+def get_def(dt_lst):
+    """If size of dt_lst is at least 2, then extract definition with the example
+     Otherwise, extract definition text only.
+    Args:
+      dt_lst: consisting of one or more ['text'] or ['vis']
+    Returns:
+      Returns a string representation of definitions and example
+    """
+    ret = ""
+    for e in dt_lst:
+      if e[0] == "text":
+        ret += (color.GREEN + e[1] + '\n' + color.END)
+      elif e[0] == "vis":
+        for case in e[1]:
+          ret += color.DARKCYAN + "//e.g. " + case["t"] + '\n' + color.END
+
+    return re.sub('{.*?}', '', ret)
+
 def str_in_list(lst):
     """Concatenate all strings in a list of strings. For example,
        this function returns "Hello World!" from ["Hello", "World!"].
@@ -149,6 +231,7 @@ def main(word):
     resjson = requestAPI(word)
     ret += parseJSON(resjson)
     print(ret)
+    
 
 
 if __name__ == '__main__':
