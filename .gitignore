@@ -3,3 +3,5 @@ dict.spec
 build
 key.py
 .DS_Store
+dist/
+mwdict.egg-info/
