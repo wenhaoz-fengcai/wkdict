@@ -4,4 +4,4 @@ build
 key.py
 .DS_Store
 dist/
-mwdict.egg-info/
+wkdict.egg-info/

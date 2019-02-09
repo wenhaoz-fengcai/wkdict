@@ -4,11 +4,11 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="mwdict",
-    version="0.0.2",
+    name="wkdict",
+    version="0.0.3",
     author="Wenhao Zhang",
     author_email="wenhaoz@ucla.edu",
-    description="A Merriam-Webster dictionary app sits in your CLI environment",
+    description="A dictionary app sits in your CLI environment",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/jiaowoshabi/dict",
@@ -19,6 +19,6 @@ setuptools.setup(
         "Operating System :: OS Independent",
     ],
     entry_points = {
-        'console_scripts': ['mwdict=mwdict.command:main'],
+        'console_scripts': ['wkdict=wkdict.command:main'],
     }
 )

@@ -1,6 +1,3 @@
-URL = 'https://www.dictionaryapi.com/api/v3/references/collegiate/json/'
-KEY = 'fb5d74f4-48dd-4cf8-82b5-6063407db21c'
-
 class color:
    PURPLE = '\033[95m'
    CYAN = '\033[96m'
