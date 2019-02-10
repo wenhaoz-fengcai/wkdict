@@ -8,6 +8,6 @@ from wkdict.wkdict import parseJSON
 @click.command()
 @click.argument('word')
 def main(word="test"):
-    rprint("(* This application is powered by Merriam-Webster Inc.'s API. *)")
-    resjson = requestAPI(word)
+    print("(* This application is powered by Wiktionary's API. *)")
+    word, resjson = requestAPI(word)
     parseJSON(word, resjson)

@@ -1,11 +1,11 @@
 <div align="center">
 
-# wkdict (v0.0.2)
+# wkdict (v0.0.3)
 
 A dictionary app sits in your CLI environment.
 
 
-![](https://github.com/jiaowoshabi/dict/blob/master/snapshot.png)
+![](https://github.com/jiaowoshabi/wkdict/blob/master/snapshot.png)
 
 </div>
 
@@ -51,19 +51,21 @@ For example, `wkdict love` will give you the following result:
 
 ## Roadmap
 
-Curren app version is `0.0.2`.
+Curren app version(master branch) is `0.0.3`.
 
-`0.0.3` will add:
+Changes in current version:
+
+* Change to Wiktionary API from Merriam-Webster's API
+
+`0.0.4` will add:
 
 * Better formatting of dictionary entries
 * Standard Command-Line Options
-* Change to Wiktionary API
+
 
 
 
 <div align="center">
-
-![](https://github.com/jiaowoshabi/dict/blob/master/MWLogo_LightBG_120x120_2x.png) 
 
 This application is powered by [Wiktionary's](https://www.wiktionary.org/) Dictionary API
 

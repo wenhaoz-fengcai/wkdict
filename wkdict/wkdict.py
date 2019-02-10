@@ -5,7 +5,7 @@ import click
 import requests
 import textwrap
 
-from constants import color
+from wkdict.constants import color
 from wiktionaryparser import WiktionaryParser
 
 def requestAPI(word="test"):
@@ -47,12 +47,12 @@ def parseJSON(word, table):
             definitions = entry.get("definitions", [])
             for def_idx, def_text in enumerate(definitions):
                 print('\t' + color.YELLOW + str(def_idx+1) + " " + def_text.get("partOfSpeech", "") + color.END)
-                print(color.UNDERLINE + '\tDefinitions' + color.END)
+                print('\t' + color.UNDERLINE + 'Definitions' + color.END)
                 for text_id, text in enumerate(def_text.get("text", [])):
                     print('\t' +  color.GREEN + "-. "   + str_in_list(textwrap.wrap(text, width=80)) + color.END)
 
                 if def_text.get("examples") != []:
-                  print(color.UNDERLINE + '\tExamples' + color.END)
+                  print('\t' + color.UNDERLINE + 'Examples' + color.END)
                   for text_id, text in enumerate(def_text.get("examples", [])):
                       print('\t'  +  color.BLUE + "// "   + str_in_list(textwrap.wrap(text, width=80)) + color.END)
 
@@ -77,7 +77,7 @@ def str_in_list(lst):
 @click.command()
 @click.argument('word')
 def main(word):
-    ret = "(* This application is powered by Merriam-Webster Inc.'s API. *)\n"
+    ret = "(* This application is powered by Wiktionary Inc.'s API. *)\n"
     word, resjson = requestAPI(word)
     parseJSON(word, resjson)
 
