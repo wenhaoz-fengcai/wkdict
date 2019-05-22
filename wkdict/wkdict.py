@@ -33,7 +33,7 @@ def parseJSON(word, table):
     """
     res = list()
     if len(table[0]["definitions"]) < 1:
-        raise ValueError('Empty look-up result returned')
+        print(color.RED + 'Empty look-up result returned' + color.END)
     else:
         for e_idx, entry in enumerate(table):
             # Print out prons
@@ -41,7 +41,12 @@ def parseJSON(word, table):
             if pron_dict is None:
                 print(str(e_idx+1) + ") " + color.BOLD + word + color.END)
             else:
-                print(str(e_idx+1) + ") " + color.BOLD + word + color.END + '\t' + color.PURPLE + pron_dict.get("text", [""])[0] + color.END)
+                # get prons list
+                prons = pron_dict.get("text", [""])
+                pron = ""
+                if len(prons) != 0:
+                    pron = prons[0]
+                print(str(e_idx+1) + ") " + color.BOLD + word + color.END + '\t' + color.PURPLE + pron + color.END)
 
             # Print out defitions
             definitions = entry.get("definitions", [])
