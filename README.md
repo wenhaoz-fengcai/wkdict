@@ -1,6 +1,6 @@
 <div align="center">
 
-# wkdict (v0.0.3)
+# wkdict (v0.0.4)
 
 A dictionary app sits in your CLI environment.
 
@@ -51,13 +51,13 @@ For example, `wkdict love` will give you the following result:
 
 ## Roadmap
 
-Curren app version(master branch) is `0.0.3`.
+Curren app version(master branch) is `0.0.4`.
 
 Changes in current version:
 
-* Change to Wiktionary API from Merriam-Webster's API
+* Bug fixes and improvements
 
-`0.0.4` will add:
+`0.0.5` will add:
 
 * Better formatting of dictionary entries
 * Standard Command-Line Options

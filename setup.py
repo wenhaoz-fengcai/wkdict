@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="wkdict",
-    version="0.0.3",
+    version="0.0.4",
     author="Wenhao Zhang",
     author_email="wenhaoz@ucla.edu",
     description="A dictionary app sits in your CLI environment",
