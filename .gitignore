@@ -5,3 +5,4 @@ key.py
 .DS_Store
 dist/
 wkdict.egg-info/
+env
