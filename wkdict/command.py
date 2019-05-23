@@ -7,14 +7,14 @@ from wkdict.wkdict import parseJSON
 
 @click.command()
 @click.argument('word')
-@click.option('--defs', is_flag=False, 
-    help="Maximum number of definition entries to print out.")
-@click.option('--egs', is_flag=False, 
-    help="Maximum number of example entries to print out.")
+@click.option('--limit', type=int, default=3, show_default=True,
+    help="Maximum number of entries/examples shown.")
 @click.version_option()
-def main(word="love", defs="3", egs="3"):
-    click.secho("🔅 This application is powered by Wiktionary's API 🔅", fg='yellow')
+def main(word, limit):
+    click.echo()
+    click.secho("🔅 This application is powered by Wiktionary's API 🔅", 
+                fg='cyan', bold=True, blink=True)
     click.echo()
     word, resjson = requestAPI(word)
-    parseJSON(word, resjson, int(defs), int(egs))
-    click.echo()
+    ret = parseJSON(word, resjson, limit)
+    click.echo(ret)
