@@ -8,7 +8,7 @@ class TestWkdict(unittest.TestCase):
         try:
             words = ["If", "there", "a", "main", "concern", "Google",
                      "may", "have", "oversold"]
-            for word in words[0]:
+            for word in words:
                 word, resjson = requestAPI(word)
                 ret = parseJSON(word, resjson, 1)
         except:
@@ -20,7 +20,7 @@ class TestWkdict(unittest.TestCase):
         try:
             words = [".", "?", "(Google)",
                      "ma$y", "ha^ve"]
-            for word in words[0]:
+            for word in words:
                 word, resjson = requestAPI(word)
                 ret = parseJSON(word, resjson, 1)
                 self.assertTrue("The word you typed is" in ret)
