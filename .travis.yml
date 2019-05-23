@@ -1,0 +1,6 @@
+language: python
+warnings_are_errors: false
+
+# command to run tests
+script:
+  - python -m unittest discover -s wkdict/tests

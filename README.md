@@ -1,11 +1,16 @@
 <div align="center">
 
-# wkdict (v0.0.4)
+# wkdict (v0.1.0)
 
 A dictionary app sits in your CLI environment.
 
+[![PyPI version](https://badge.fury.io/py/wkdict.svg)](https://badge.fury.io/py/wkdict)
+[![Build Status](https://travis-ci.org/jiaowoshabi/wkdict.svg?branch=master)](https://travis-ci.org/jiaowoshabi/wkdict)
+[![GitHub issues](https://img.shields.io/github/issues/jiaowoshabi/wkdict.svg)](https://github.com/jiaowoshabi/wkdict/issues)
+[![GitHub license](https://img.shields.io/github/license/jiaowoshabi/wkdict.svg)](https://github.com/jiaowoshabi/wkdict/blob/master/LICENSE)
 
-![](https://github.com/jiaowoshabi/wkdict/blob/master/snapshot.png)
+
+![](https://s3-us-west-1.amazonaws.com/blogassetswenhao/wkdict/Screen+Shot+2019-05-22+at+10.20.04+PM.png)
 
 </div>
 
@@ -14,7 +19,7 @@ A dictionary app sits in your CLI environment.
 Make sure you have the python3 installed on your machine, and use the following command to install `wkdict`
 
 ```
-sudo pip3 install wkdict
+pip3 install wkdict
 ```
 
 ## Usage
@@ -29,38 +34,44 @@ For example, `wkdict love` will give you the following result:
 
 ```
 1) love	(UK, US) IPA: /lʌv/
-	1 noun
-	Definitions
-	-. love (countable and uncountable, plural loves)
-	-. (uncountable) Strong affection.
-	-. (countable) A person who is the object of romantic feelings; a darling, asweetheart, a beloved.
-	-. (colloquial, Britain) A term of friendly address, regardless of feelings.
-	-. A thing, activity, etc which is the object of one's deep liking or enthusiasm.
-	-. (euphemistic) Sexual desire; attachment based on sexual attraction.
-	-. (euphemistic) Sexual activity.
-	-. An instance or episode of being in love; a love affair.
-	-. Used as the closing, before the signature, of a letter, especially between goodfriends or family members, or by the young.
-	-. Alternative letter-case form of Love (“personification of love”).
-	-. (obsolete) A thin silk material.
-	-. A climbing plant, Clematis vitalba.
-	Examples
-	// A mother’s love is not easily shaken.
-	// My husband’s love is the most important thing in my life.
+   🏷  noun
 
+	📗 Definitions
+	☞ love (countable and uncountable, plural loves)
+	☞ (uncountable) Strong affection.
+	☞ (countable) A person who is the object of romantic feelings; a
+	  darling, a sweetheart, a beloved.
+
+	📘 Examples
+	➡ A mother’s love is not easily shaken.
+	➡ My husband’s love is the most important thing in my
+	  life.
+	➡ He on his side / Leaning half-raised, with looks of
+	  cordial love / Hung over her enamoured.
+...
 ``` 
 
-## Roadmap
+## Command options
 
-Curren app version(master branch) is `0.0.4`.
+```
+Usage: wkdict [OPTIONS] WORD
+
+Options:
+  --limit INTEGER  Maximum number of entries/examples shown.  [default: 3]
+  --version        Show the version and exit.
+  --help           Show this message and exit.
+```
+
+## Changelog
+
+Curren app version(master branch) is `0.1.0`.
 
 Changes in current version:
 
-* Bug fixes and improvements
-
-`0.0.5` will add:
-
 * Better formatting of dictionary entries
-* Standard Command-Line Options
+* Add unicode support
+* Add test cases
+* Add Command-Line Options
 
 
 
